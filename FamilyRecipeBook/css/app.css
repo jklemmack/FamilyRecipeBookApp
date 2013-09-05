@@ -1,0 +1,56 @@
+/* Account for fixed navbar */
+ body {
+	padding-top: 70px;
+	
+}
+
+body, html{
+	height: 100%;
+	overflow: hidden;
+}
+/* Finesse the page header spacing */
+ .page-header {
+	margin-bottom: 30px;
+}
+.page-header .lead {
+	margin-bottom: 10px;
+}
+.scrollable {
+	height: 100%;
+	overflow: auto;
+}
+.max-height {
+	height: 100%;
+}
+.no-overflow {
+	overflow: hidden;
+}
+.col-left {
+	position: relative;
+	min-height: 1px;
+	padding-top: 10px;
+	padding-right: 5px;
+	padding-left: 5px;
+	float: left;
+	width: 125px;
+}
+.col-body {
+	position: relative;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+	left: 0px;
+	right: 0px;
+	
+}
+/* Non-responsive overrides
+ *
+ * Utilitze the following CSS to disable the responsive-ness of the container,
+ * grid system, and navbar.
+ */
+
+/* Reset the container */
+ .container {
+	max-width: none !important;
+	width: 100%;
+}

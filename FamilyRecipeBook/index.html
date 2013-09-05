@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+http://www.apache.org/licenses/LICENSE-2.0
 
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
---> 
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -35,8 +35,44 @@
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
+
+<!doctype html>
+<html lang="en" ng-app="myApp">
+    <head>
+        <link rel="stylesheet" href="css/bootstrap.css" />
+        <link rel="stylesheet" href="css/app.css" />
+        <script type="application/javascript" src="lib/jquery.js"></script>
+        <script type="application/javascript" src="lib/bootstrap.js"></script>
+
+        <script type="application/javascript" src="app/app.js"></script>
+        <script type="application/javascript" src="app/Recipe/RecipeController.js"></script>
+    </head>
+    <body>
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="row">
+                <div class="col-xs-3">Left</div>
+                <div class="col-xs-6 text-center">Header</div>
+                <div class="col-xs-3 text-right">
+                    <div class="badge">5</div>Right
+                </div>
+            </div>
+        </div>
+        <div class="container max-height no-overflow">
+            <div class="row max-height">
+                <div class="col-left scrollable">
+                    <div>
+                        <input type="search" class="form-control" placeholder="Search" />
+                    </div>
+                </div>
+                <div class="col-body scrollable"></div>
+            </div>
+        </div>
+
         <script type="text/javascript">
             app.initialize();
         </script>
     </body>
+
 </html>
