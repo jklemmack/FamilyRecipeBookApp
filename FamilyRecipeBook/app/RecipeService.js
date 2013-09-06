@@ -6,9 +6,10 @@ angular.module('myApp.RecipeService', [])
     function($http) {
         var factory = {}; 
         
-        $http.get('js/recipes.json')
+        $http.get('js/recipes.js')
         .success(function(data, status, headers, config) {
             //recipes = data;
+            factory.recipes = data;
         })
         .error(function(data, status, headers, config){
             
@@ -16,8 +17,11 @@ angular.module('myApp.RecipeService', [])
         
         factory.recipes = [];
         
+        factory.setSearch = function (category, search){
+            this.currentSearch = {"category": category, "search": search};
+        }
         factory.getRecipes = function(category, search) {
-            setSearch(category, search);
+            this.setSearch(category, search);
             return recipes;
         }
         
@@ -27,10 +31,6 @@ angular.module('myApp.RecipeService', [])
                 {name: 'All', count: 5},
                 {name: 'Soups', count:1}
             ];
-        }
-        
-        function setSearch(category, search){
-            this.currentSearch = {"category": category, "search": search};
         }
         
         factory.currentSearch = {};
