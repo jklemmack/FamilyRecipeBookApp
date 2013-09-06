@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('myApp.Recipe', [])
-	.controller('RecipeList', ['$scope', '$http', 
-		function($scope, $http) {
+angular.module('myApp.Recipe', ['myApp.RecipeService'])
+	.controller('RecipeList', ['$scope', '$http', 'recipes',
+		function($scope, $http, recipes) {
 			
 		}])
 ;

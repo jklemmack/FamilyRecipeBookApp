@@ -1,43 +1,3 @@
-<!DOCTYPE html>
-<!--
-Licensed to the Apache Software Foundation (ASF) under one
-or more contributor license agreements.  See the NOTICE file
-distributed with this work for additional information
-regarding copyright ownership.  The ASF licenses this file
-to you under the Apache License, Version 2.0 (the
-"License"); you may not use this file except in compliance
-with the License.  You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing,
-software distributed under the License is distributed on an
-"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, either express or implied.  See the License for the
-specific language governing permissions and limitations
-under the License.
--->
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-    </body>
-</html>
-
 <!doctype html>
 <html lang="en" ng-app="myApp">
     <head>
@@ -45,20 +5,23 @@ under the License.
         <link rel="stylesheet" href="css/app.css" />
         <script type="application/javascript" src="lib/jquery.js"></script>
         <script type="application/javascript" src="lib/bootstrap.js"></script>
-
+    
+        <script type="application/javascript" src="js/index.js"></script>
+        <script type="application/javascript" src="lib/angular.js"></script>
+        <script type="application/javascript" src="lib/angular-ui-router.js"></script>
         <script type="application/javascript" src="app/app.js"></script>
+        <script type="application/javascript" src="app/RecipeService.js"></script>
         <script type="application/javascript" src="app/Recipe/RecipeController.js"></script>
     </head>
     <body>
-        <div class="navbar navbar-default navbar-fixed-top">
-            <div class="row">
-                <div class="col-xs-3">Left</div>
-                <div class="col-xs-6 text-center">Header</div>
-                <div class="col-xs-3 text-right">
-                    <div class="badge">5</div>Right
-                </div>
-            </div>
+        <!--<div class="navbar navbar-default navbar-fixed-top">
+        <div class="row">
+        <div class="col-xs-3">Left</div>
+        <div class="col-xs-6 text-center">Header</div>
+        <div class="col-xs-3 text-right">
+        <div class="badge">5</div>Right</div>
         </div>
+        </div>-->
         <div class="container max-height no-overflow">
             <div class="row max-height">
                 <div class="col-left scrollable">
@@ -69,10 +32,11 @@ under the License.
                 <div class="col-body scrollable"></div>
             </div>
         </div>
-
-        <script type="text/javascript">
-            app.initialize();
-        </script>
     </body>
-
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
 </html>
+
