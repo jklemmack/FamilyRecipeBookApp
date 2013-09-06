@@ -5,17 +5,23 @@ angular.module('myApp.RecipeService', [])
     '$http',
     function($http) {
         var factory = {}; 
-        
-        $http.get('js/recipes.js')
+
+        factory.recipes = [];
+
+        /*$http.get('js/recipes.js')
         .success(function(data, status, headers, config) {
             //recipes = data;
             factory.recipes = data;
         })
         .error(function(data, status, headers, config){
             
+        });*/
+        
+        $.getJSON('js/recipes.js', function(data) {
+            factory.recipes = data;
         });
         
-        factory.recipes = [];
+        
         
         factory.setSearch = function (category, search){
             this.currentSearch = {"category": category, "search": search};
