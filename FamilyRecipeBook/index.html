@@ -13,7 +13,7 @@
         <script type="application/javascript" src="app/RecipeService.js"></script>
         <script type="application/javascript" src="app/Recipe/RecipeController.js"></script>
     </head>
-    <body>
+    <body ng-controller="RecipeList">
         <!--<div class="navbar navbar-default navbar-fixed-top">
         <div class="row">
         <div class="col-xs-3">Left</div>
@@ -27,6 +27,9 @@
                 <div class="col-left scrollable">
                     <div>
                         <input type="search" class="form-control" placeholder="Search" />
+                    </div>
+                    <div ng-repeat="recipe in recipes">
+                        {{recipe.name}}
                     </div>
                 </div>
                 <div class="col-body scrollable"></div>

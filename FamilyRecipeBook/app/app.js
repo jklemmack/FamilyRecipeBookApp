@@ -1,13 +1,14 @@
 'use strict';
 
-angular.module('myApp', ['ui.router', 'myApp.Recipe'])
-	.config(['$routeProvider', 
-			function($routeProvider)
-	{
-	}])
-/*.run(['$rootScope', '$state', '$stateParams',
-			function ($rootScope, $state, $stateParams) {
-    $rootScope.$state = $state;
-    $rootScope.$stateParams = $stateParams;
-}])*/
+angular.module('myApp', ['ui.compat', 'myApp.Recipe'])
+.config([
+    '$stateProvider',
+    function($stateProvider) {
+    }
+])
 ;
+/*.run(['$rootScope', '$state', '$stateParams',
+function ($rootScope, $state, $stateParams) {
+$rootScope.$state = $state;
+$rootScope.$stateParams = $stateParams;
+}])*/
