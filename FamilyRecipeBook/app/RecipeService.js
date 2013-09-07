@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp.RecipeService', [])
-.factory('recipes', [
+.service('recipes', [
     '$http',
     function($http) {
         var factory = {}; 
@@ -20,15 +20,14 @@ angular.module('myApp.RecipeService', [])
         $.getJSON('js/recipes.js', function(data) {
             factory.recipes = data;
         });
-        
-        
-        
+                
         factory.setSearch = function (category, search){
             this.currentSearch = {"category": category, "search": search};
         }
+				
         factory.getRecipes = function(category, search) {
             this.setSearch(category, search);
-            return recipes;
+            return this.recipes;
         }
         
         factory.getCategories = function(search) {
