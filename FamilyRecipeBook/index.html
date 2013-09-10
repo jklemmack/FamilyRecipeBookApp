@@ -12,6 +12,12 @@
 		<script type="application/javascript" src="app/app.js"></script>
 		<!--<script type="application/javascript" src="app/RecipeService.js"></script>-->
 		<script type="application/javascript" src="app/Recipe/RecipeController.js"></script>
+		<script type="application/javascript">
+			if (!('contains' in String.prototype))
+				String.prototype.contains = function(str, startIndex) {
+					return -1 !== String.prototype.indexOf.call(this, str, startIndex);
+			};
+		</script>
 	</head>
 	<body ng-controller="RecipeList">
 		<!--<div class="navbar navbar-default navbar-fixed-top">
@@ -34,28 +40,42 @@
 					</div>
 				</div>
 				<div class="col-body scrollable" ng-switch on="view">
+					<!-- List view of recipes -->
 					<div class="list-group" ng-switch-when="list">
-						asdf
 						<a class="list-group-item" ng-repeat="recipe in filteredRecipes" ng-click="SelectRecipe(recipe)">
 							<h2>{{recipe.title}}</h2>
 							<span style="overflow-x: hidden; overflow-y: hidden;">{{recipe.flavorText}}</span>
 						</a>
 					</div>
+					<!-- Detail view of recipes -->
 					<div ng-switch-when="view">
 						<button type="button" class="btn btn-primary" ng-click="GoBack();">
 							<i class="icon-backward"></i>&nbsp;Back</button>
-						<h1>{{selectedRecipe.title}}</h1>
-						<div></div>
+						<div class="row">
+							<h1>{{selectedRecipe.title}}</h1>
+						</div>
+						<div class="row">
+							<div class="col-sm-4">Prep Time:
+								<br />Cook Time:</div>
+							<div class="col-sm-8">
+								<i>{{selectedRecipe.flavorText}}</i>
+							</div>
+						</div>
+						<br />
+						<div class="row">
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 class="panel-title">Ingredients</h3>
+								</div>
+								<div class="panel-body"></div>
+							</div>
+						</div>
 					</div>
-				</div><!-- end of switch -->
+					<!-- end of detail view -->
+				</div>
+				<!-- end of right body -->
 			</div>
 		</div>
 	</body>
-	<!-- <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript">
-        app.initialize();
-    </script>
--->
 
 </html>
