@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp', ['ui.compat', 'myApp.Recipe'])
+angular.module('myApp', ['ui.compat', 'myApp.RecipeService', 'myApp.Recipe'])
 	.config(['$stateProvider', function($stateProvider) {
 				
 	}]);

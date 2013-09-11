@@ -1,13 +1,13 @@
 'use strict';
 
-angular.module('myApp.Recipe', [])
-	.controller('RecipeList', ['$scope', '$http', function ($scope, $http) {
+angular.module('myApp.Recipe', ['myApp.RecipeService'])
+	.controller('RecipeList', ['$scope', '$http', '$log', 'Recipes', function ($scope, $http, $log, Recipes) {
 
 		// The explicit text typed in the search box
 		$scope.filter = '';
 
 		// The list of recipes to display
-		$scope.filteredRecipes = [];
+		$scope.recipes = [];
 
 		//The selected category
 		$scope.category = '';
@@ -20,50 +20,28 @@ angular.module('myApp.Recipe', [])
 
 		// Whether we are viewing the recipe list or a specific recipe
 		$scope.view = 'list';
+        
+        $scope.$watch('recipes', function(newValue, oldValue) {
+            FilterCategories();
+        });
+        
+        $scope.$watch('filter', function(newValue, oldValue) {
+           $scope.recipes = Recipes.getRecipes($scope.category, $scope.filter)
+            .then(function(response) {
+                    FilterCategories(response);
+                    return response;
+                });
+        });
 
-		$scope.masterRecipes = [];
+        $scope.$watch('category', function(newValue, oldValue) {
+           $scope.recipes = Recipes.getRecipes($scope.category, $scope.filter); 
+        });
 
-		// Get the master recipe list on load		
-		$http.get('/js/recipes.js').then(function (res) {
-			$scope.masterRecipes = res.data;
-			FilterRecipes();
-			FilterCategories();
-		});
-
-		$scope.$watch('filter', function () {
-			FilterRecipes();
-			FilterCategories();
-			SwitchToList();
-		});
-
-		$scope.$watch('masterRecipes', function () {
-			FilterRecipes();
-			FilterCategories();
-		});
-
+        
+		$scope.recipes = Recipes.getRecipes(null, null);
+        
 		function SwitchToList() {
 			$scope.view = 'list';
-		}
-
-		function FilterRecipes() {
-			var ret = [];
-
-			for (var i = 0; i < $scope.masterRecipes.length; i++) {
-				var recipe = $scope.masterRecipes[i];
-				
-				if ($scope.filter != '' && 
-								 recipe.title.toLowerCase().indexOf($scope.filter.toLowerCase()) == -1) {
-					recipe = null;
-				}
-				if ($scope.category != '' &&
-						!recipe.categories.contains($scope.category))
-					recipe = null;
-				
-				if (recipe) ret.push(recipe);
-				
-			}
-			$scope.filteredRecipes = ret;
-			//$scope.filteredRecipes = $scope.masterRecipes;
 		}
 
 		$scope.SelectRecipe = function (recipe) {
@@ -76,13 +54,18 @@ angular.module('myApp.Recipe', [])
 			$scope.view = 'list';
 		}
 
-		function FilterCategories() {
+        $scope.SelectCategory = function(category)
+        {
+            $scope.category = category;
+            var x = $(".cat:" + category);
+        }
+        
+		function FilterCategories(recipes) {
 			// Go through the filtered recipes and extract all categories
 			var categories = [];
-			//if (!$scope.filteredRecipes) return [];
-
-			for (var i = 0; i < $scope.filteredRecipes.length; i++) {
-				var r = $scope.filteredRecipes[i];
+            
+			for (var i = 0; i < recipes.length; i++) {
+				var r = recipes[i];
 				for (var j = 0; j < r.categories.length; j++) {
 					if (!categories[r.categories[j]])
 						categories[r.categories[j]] = 0;
@@ -90,6 +73,7 @@ angular.module('myApp.Recipe', [])
 				}
 			}
 
+            // Rebuild as an array of name / count pair objects
 			var ret = [];
 			var keys = Object.keys(categories);
 			for (var i = 0; i < keys.length; i++) {
@@ -100,14 +84,6 @@ angular.module('myApp.Recipe', [])
 			}
 
 			$scope.filteredCategories = ret;
-
-			/*			$scope.filteredCategories = [{
-					"name": "All",
-					"count": "15"
-				}, {
-					"name": "Soups",
-					"count": "3"
-				}];*/
 		}
 
 	}]);

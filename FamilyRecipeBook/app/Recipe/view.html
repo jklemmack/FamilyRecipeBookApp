@@ -1,0 +1,42 @@
+<div class="col-body scrollable" >
+
+	<!-- Detail view of recipes -->
+	<div ng-switch-when="view">
+		<button type="button" class="btn btn-primary" ng-click="GoBack();">
+			<i class="icon-backward"></i>&nbsp;Back</button>
+		<div class="row">
+			<h1>{{selectedRecipe.title}}</h1>
+		</div>
+		<div class="row">
+			<div class="col-sm-4">Prep Time:
+				<br />Cook Time:</div>
+			<div class="col-sm-8">
+				<i>{{selectedRecipe.flavorText}}</i>
+			</div>
+		</div>
+		<br />
+		<div class="row">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">Ingredients</h3>
+				</div>
+				<div class="panel-body">
+                    <div class="row" ng-repeat="ingredient in selectedRecipe.ingredients">
+                        <div class="col-sm-4">{{ingredient.amount}}</div>
+                        <div class="col-sm-8">{{ingredient.name}}</div>
+                    </div>
+                </div>
+			</div>
+		</div>
+        <br />
+        <div class="row">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">Instructions</h3>
+				</div>
+				<div class="panel-body">{{selectedRecipe.instructions}}</div>
+			</div>
+		</div>
+	</div>
+	<!-- end of detail view -->
+</div>

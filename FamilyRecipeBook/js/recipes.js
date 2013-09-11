@@ -1,6 +1,6 @@
  [
     {
-				"id" : "1",
+		"id" : "1",
         "title": "Honey Oatmeal Bread",
         "prepTime": "10 minutes",
         "cookTime": "50 minutes",
@@ -10,10 +10,10 @@
             {"name": "Flour", "amount": "3 1/2 cups"}
         ],
         "instructions": "Mix, kneed, bake",
-        "pictures": ["image001.jpg"],
-        "categories": ["Appetizers", "All"]        
+        "categories": ["Appetizers", "All"],
+        "photo": "1.png"
     },{
-				"id" : "2",
+		"id" : "2",
         "title": "Tomato Soup",
         "prepTime": "10 minutes",
         "cookTime": "50 minutes",
@@ -23,8 +23,8 @@
             {"name": "Flour", "amount": "3 1/2 cups"}
         ],
         "instructions": "Mix, kneed, bake",
-        "pictures": ["image001.jpg"],
-        "categories": ["Soups", "All"]        
+        "categories": ["Soups", "All"],
+        "photo": "1.png"
         
     }
 ]

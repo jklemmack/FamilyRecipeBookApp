@@ -10,7 +10,7 @@
 		<script type="application/javascript" src="lib/angular.js"></script>
 		<script type="application/javascript" src="lib/angular-ui-router.js"></script>
 		<script type="application/javascript" src="app/app.js"></script>
-		<!--<script type="application/javascript" src="app/RecipeService.js"></script>-->
+		<script type="application/javascript" src="app/Recipe/RecipeService.js"></script>
 		<script type="application/javascript" src="app/Recipe/RecipeController.js"></script>
 		<script type="application/javascript">
 			if (!('contains' in String.prototype))
@@ -34,15 +34,16 @@
 					<div>
 						<input type="search" class="form-control" placeholder="Search" ng-model="filter" />
 					</div>
-					<div class="list-group">
-						<a class="list-group-item" ng-repeat="cat in filteredCategories">
+					<div class="list-group">                        
+						<a class="list-group-item" ng-repeat="cat in filteredCategories" ng-click="SelectCategory(cat.name);" id="cat:{{cat.name}}">
 							<span class="badge">{{cat.count}}</span>{{cat.name}}</a>
 					</div>
 				</div>
 				<div class="col-body scrollable" ng-switch on="view">
 					<!-- List view of recipes -->
 					<div class="list-group" ng-switch-when="list">
-						<a class="list-group-item" ng-repeat="recipe in filteredRecipes" ng-click="SelectRecipe(recipe)">
+						<a class="list-group-item" ng-repeat="recipe in recipes" ng-click="SelectRecipe(recipe)">
+                            <img ng-if="recipe.photo}}" ng-src="img/{{recipe.photo}}" height="125px">
 							<h2>{{recipe.title}}</h2>
 							<span style="overflow-x: hidden; overflow-y: hidden;">{{recipe.flavorText}}</span>
 						</a>
@@ -67,7 +68,21 @@
 								<div class="panel-heading">
 									<h3 class="panel-title">Ingredients</h3>
 								</div>
-								<div class="panel-body"></div>
+								<div class="panel-body">
+                                    <div class="row" ng-repeat="ingredient in selectedRecipe.ingredients">
+                                        <div class="col-sm-4">{{ingredient.amount}}</div>
+                                        <div class="col-sm-8">{{ingredient.name}}</div>
+                                    </div>
+                                </div>
+							</div>
+						</div>
+                        <br />
+                        <div class="row">
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 class="panel-title">Instructions</h3>
+								</div>
+								<div class="panel-body">{{selectedRecipe.instructions}}</div>
 							</div>
 						</div>
 					</div>
@@ -76,6 +91,7 @@
 				<!-- end of right body -->
 			</div>
 		</div>
+        <script type="application/javascript" src="cordova.js"></script>
 	</body>
 
 </html>

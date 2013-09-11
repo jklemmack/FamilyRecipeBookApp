@@ -1,0 +1,10 @@
+<div class="col-body scrollable" ng-switch on="view">
+	<!-- List view of recipes -->
+	<div class="list-group" ng-switch-when="list">
+		<a class="list-group-item" ng-repeat="recipe in recipes" ng-click="SelectRecipe(recipe)">
+            <img ng-if="recipe.photo}}" ng-src="img/{{recipe.photo}}" height="125px">
+			<h2>{{recipe.title}}</h2>
+			<span style="overflow-x: hidden; overflow-y: hidden;">{{recipe.flavorText}}</span>
+		</a>
+	</div>
+</div>

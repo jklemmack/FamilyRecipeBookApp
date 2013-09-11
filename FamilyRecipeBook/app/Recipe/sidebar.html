@@ -1,0 +1,9 @@
+<div class="col-left scrollable">
+	<div>
+		<input type="search" class="form-control" placeholder="Search" ng-model="filter" />
+	</div>
+	<div class="list-group">
+		<a class="list-group-item" ng-repeat="cat in filteredCategories">
+			<span class="badge">{{cat.count}}</span>{{cat.name}}</a>
+	</div>
+</div>
